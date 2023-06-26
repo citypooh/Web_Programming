@@ -1,0 +1,46 @@
+package chap3;	//세 실수를 읽어서 2차방정식의 근을 구하는 프로그램
+	
+import java.util.Scanner;	//스캐너 메소드를 사용하기 위해 추가
+	 
+public class Ch3_Ex1 {
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);	//스캐너 객체 생성
+		
+		double a,b,c;	//2차항의 계수:a,1차항의 계수:b,상수항의 계수:c 
+		double d;	//d = (b*b)-(4*a*c)
+		double root;	//d의 제곱근
+		double x1,x2;	//2차방정식의 근
+		
+		System.out.println("2차방정식의 근을 구하는 프로그램입니다. ");
+		
+		System.out.println("2차항의 계수(a)를 입력하시오 : ");
+		a = scan.nextDouble();	//a의 값을 입력
+		System.out.println("1차항의 계수(b)를 입력하시오 : ");
+		b = scan.nextDouble();	//b의 값을 입력
+		System.out.println("상수항의 계수(c)를 입력하시오 : ");
+		c = scan.nextDouble();	//c의 값을 입력
+		
+		d = (b*b)-(4*a*c);	//d의 값을 위의 주석처럼 정의
+		root = Math.sqrt(d);	//제곱근을 구하는 메소드 호출
+		
+		if(d > 0) {	//2개의 실근을 가질 경우
+			x1 = ((-b-root)/(2*a));
+			x2 = ((-b+root)/(2*a));
+			System.out.println("==========================");
+			System.out.println("2차방정식의 근은 " + x1 + " 과 " + x2 + " 입니다. ");
+		}
+		if(d == 0) {	//중근을 가질 경우
+			x1 = x2 = (-b+root)/(2*a);
+			System.out.println("==========================");
+			System.out.println("2차방정식의 근은 " + x1 + " 입니다. ");
+		}
+		if(d < 0) {	//실근이 없는 경우
+			System.out.println("==========================");
+			System.out.println("실근이 없음");
+		}
+		
+		scan.close();	//스캐너 객체 종료
+	}
+	
+}
